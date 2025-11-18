@@ -9,4 +9,4 @@ st.write(
     "ahsgdgafsd"
 )
 
-a = int(input("Masukkan angka:"))
+user_input = st.text_input("label goes here", default_value_goes_here)
