@@ -3,6 +3,10 @@ import streamlit as st
 st.title("Trayek Praktikum")
 
 st.write(
+    "sjnxjksbcjks"
+)
+
+st.write(
     "Selamat Praktikum!"
 )
 
