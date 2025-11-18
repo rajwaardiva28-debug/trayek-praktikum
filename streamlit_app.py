@@ -9,4 +9,10 @@ st.write(
     "ahsgdgafsd"
 )
 
-input_user = st.text_input("Masukkan NIM: ", )
+input_NIM = st.text_input("Masukkan NIM: ", )
+pilihan_praktikum = ["LKD", "LFD"]
+
+pilihan_terpilih = st.selectbox(
+    "Praktikum yang akan dilakukan:",
+    pilihan_praktikum
+)
