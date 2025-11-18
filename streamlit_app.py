@@ -9,4 +9,4 @@ st.write(
     "ahsgdgafsd"
 )
 
-a = input("djasdbasd")
+a = int(input("Masukkan angka:"))
