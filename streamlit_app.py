@@ -14,4 +14,6 @@ pilihan_terpilih = st.selectbox(
     pilihan_praktikum
 )
 
+st.button("Enter")
+
 
