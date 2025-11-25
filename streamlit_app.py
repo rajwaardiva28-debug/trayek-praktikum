@@ -31,15 +31,28 @@ if st.session_state.page == "page1":
 elif st.session_state.page == "page2":
     st.title("Halaman Praktikum LKD")
     st.write("Selamat datang di praktikum LKD!")
-    st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
+    #st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
 
+    modul_data = {
+    "Modul": [
+        ":material/devices: Widget Pro",
+        ":material/smart_toy: Smart Device",
+        ":material/inventory: Premium Kit",
+    ],
+    "Category": [":blue[Electronics]", ":green[IoT]", ":violet[Bundle]"],
+    "Stock": ["🟢 Full", "🟡 Low", "🔴 Empty"],
+    "Units sold": [1247, 892, 654],
+    "Revenue": [125000, 89000, 98000],
+}
+st.table(product_data, border="horizontal")
+    
     st.button("Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
 
 # HALAMAN 3 (KHUSUS LFD)
 elif st.session_state.page == "page3":
     st.title("Halaman Praktikum LFD")
     st.write("Selamat datang di praktikum LFD!")
-    st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
+    #st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
 
     st.button("Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
 
