@@ -77,3 +77,21 @@ elif st.session_state.page.startswith("modul_"):
         
         
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
+
+    elif if nomor_modul == "2":
+        st.title("Modul 2 – Stokiometri Reaksi Kimia")
+        st.write("Selamat datang di Modul 2!")
+
+        st.subheader("🎯 PDF Praktikum")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
+
+
+    st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
