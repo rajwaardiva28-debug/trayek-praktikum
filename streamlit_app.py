@@ -21,7 +21,7 @@ if st.session_state.page == "page1":
 
     pilihan_terpilih = st.selectbox(
         "Praktikum yang akan dilakukan:",
-        pilihan_praktikum
+        pilihan_praktikum,
         key="pilihan"
     )
 
