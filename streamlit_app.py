@@ -35,9 +35,11 @@ elif st.session_state.page == "page2":
 
     modul_data = {
     "Modul": [
-        ":material/devices: Widget Pro",
-        ":material/smart_toy: Smart Device",
-        ":material/inventory: Premium Kit",
+        ":material/devices: Modul 1",
+        ":material/smart_toy: Modul 2",
+        ":material/inventory: Modul 3",
+        "Modul 4",
+        "Modul 5",
     ],
     "Category": [":blue[Electronics]", ":green[IoT]", ":violet[Bundle]"],
     "Stock": ["🟢 Full", "🟡 Low", "🔴 Empty"],
