@@ -74,16 +74,6 @@ elif st.session_state.page.startswith("modul_"):
         st.subheader("📘 Video Praktikum")
         VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=F2LkE4"
         st.video(VIDEO_URL)
-
-        st.subheader("📝 Referensi Jurnal Praktikum")
-         FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
-
-        st.components.v1.html(
-            f"""
-            <iframe src="https://drive.google.com/file/d/{FILE_ID1}/preview"
-                    width="100%" height="600"></iframe>
-            """,
-            height=600,
-        )
+        
         
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
