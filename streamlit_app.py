@@ -78,7 +78,7 @@ elif st.session_state.page.startswith("modul_"):
         
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
 
-    elif if nomor_modul == "2":
+    elif nomor_modul == "2":
         st.title("Modul 2 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 2!")
 
