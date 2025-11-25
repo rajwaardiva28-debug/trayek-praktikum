@@ -27,8 +27,8 @@ if st.session_state.page == "page1":
 elif st.session_state.page == "page2":
     st.title("Halaman berikutnya")
 
-    st.write(f"NIM kamu: {input_NIM}")
-    st.write(f"Praktikum dipilih: {pilihan_terpilih}")
+    st.write(f':[NIM:]{input_NIM}')
+    st.write(f'[Praktikum dipilih:] {pilihan_terpilih}')
 
     st.write("Ini halaman lanjutan setelah kamu tekan Enter.")
 
