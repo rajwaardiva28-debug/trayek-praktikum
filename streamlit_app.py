@@ -70,6 +70,17 @@ elif st.session_state.page.startswith("modul_"):
             """,
             height=600,
         )
+
+        st.subheader("Jurnal Praktikum")
+        FILE_Jurnal  = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_Jurnal}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
         
         st.subheader("📘 Video Praktikum")
         VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=7Kr7bi&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
