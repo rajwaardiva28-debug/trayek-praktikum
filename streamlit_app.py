@@ -103,5 +103,53 @@ elif st.session_state.page.startswith("modul_"):
             height=600,
         )
 
+    elif nomor_modul == "3":
+        st.title("Modul 3 – Stokiometri Reaksi Kimia")
+        st.write("Selamat datang di Modul 3!")
+
+        st.subheader("🎯 PDF Praktikum")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
+
+    elif nomor_modul == "4":
+        st.title("Modul 4 – Stokiometri Reaksi Kimia")
+        st.write("Selamat datang di Modul 4!")
+
+        st.subheader("🎯 PDF Praktikum")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
+
+    elif nomor_modul == "5":
+        st.title("Modul 5 – Stokiometri Reaksi Kimia")
+        st.write("Selamat datang di Modul 5!")
+
+        st.subheader("🎯 PDF Praktikum")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
+
+
+
+
 
     st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
