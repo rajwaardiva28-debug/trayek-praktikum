@@ -1,5 +1,4 @@
 import streamlit as st
-pip install streamlit[pdf]
 
 # Inisialisasi halaman
 if "page" not in st.session_state:
@@ -62,13 +61,15 @@ elif st.session_state.page.startswith("modul_"):
         st.write("Selamat datang di Modul 1!")
 
         st.subheader("🎯 PDF Praktikum")
-        st.pdf("file:///C:/Users/rajwa/Downloads/Documents/Modul%20Praktikum%20Laboratorium%20Kimia%20WI%201112%202024.pdf")
+        with open("https://drive.google.com/file/d/1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us/view", "rb") as f:
+            st.download_button("Download PDF Modul 1", f, file_name="Modul1.pdf")
         
         st.subheader("📘 Video Praktikum")
         VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=F2LkE4"
         st.video(VIDEO_URL)
 
         st.subheader("📝 Referensi Jurnal Praktikum")
-        st.pdf("file:///C:/Users/rajwa/Downloads/Documents/Juprak%20Kimia.pdf")
+        with open("https://drive.google.com/drive/u/0/folders/1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG", "rb") as f:
+            st.download_button("Download Referensi Jurnal Praktikum", f, file_name="ReferensiJuPrak.pdf")
 
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
