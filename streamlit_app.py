@@ -73,7 +73,13 @@ elif st.session_state.page.startswith("modul_"):
 
         st.subheader("Jurnal Praktikum")
         FILE_Jurnal = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
-
+        st.components.v2.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_Jurnal}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
 
         
         st.subheader("📘 Video Praktikum")
