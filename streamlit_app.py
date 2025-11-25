@@ -10,6 +10,9 @@ def go_to_page():
     elif st.session_state.pilihan == "LFD":
         st.session_state.page = "page3"
 
+def pilih_modul(modul):
+    st.session_state.page = f"modul_{modul}"
+
 # HALAMAN 1
 if st.session_state.page == "page1":
     st.title("Trayek Praktikum")
@@ -26,37 +29,45 @@ if st.session_state.page == "page1":
     )
 
     st.button("Enter", on_click=go_to_page)
-
-# HALAMAN 2 (KHUSUS LKD)
-elif st.session_state.page == "page2":
-    st.title("Halaman Praktikum LKD")
-    st.write("Selamat datang di praktikum LKD!")
-    #st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
-
-    modul_data = {
-    "Modul": [
-        ":material/devices: Modul 1",
-        ":material/smart_toy: Modul 2",
-        ":material/inventory: Modul 3",
-        "Modul 4",
-        "Modul 5",
-    ],
-    "Category": [":blue[Electronics]", ":green[IoT]", ":violet[Bundle]"],
-    "Stock": ["🟢 Full", "🟡 Low", "🔴 Empty"],
-    "Units sold": [1247, 892, 654],
-    "Revenue": [125000, 89000, 98000],
-}
-st.table(product_data, border="horizontal")
     
-    st.button("Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
+# HALAMAN 2 (MENU LKD)
+elif st.session_state.page == "page2":
+    st.title("Praktikum LKD")
+    st.write("Silakan pilih modul yang ingin kamu kerjakan:")
 
-# HALAMAN 3 (KHUSUS LFD)
+    # TOMBOL MODUL 1 – 5
+    st.button("📘 Modul 1", on_click=lambda: pilih_modul(1))
+    st.button("🤖 Modul 2", on_click=lambda: pilih_modul(2))
+    st.button("📦 Modul 3", on_click=lambda: pilih_modul(3))
+    st.button("🧪 Modul 4", on_click=lambda: pilih_modul(4))
+    st.button("📝 Modul 5", on_click=lambda: pilih_modul(5))
+
+    st.write("---")
+    st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
+
+# HALAMAN 3 (MENU LFD)
 elif st.session_state.page == "page3":
-    st.title("Halaman Praktikum LFD")
+    st.title("Praktikum LFD")
     st.write("Selamat datang di praktikum LFD!")
-    #st.write(f"Praktikum yang kamu pilih: **{st.session_state.pilihan}**")
 
-    st.button("Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
+    st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
 
+# HALAMAN MODUL 1 
+elif st.session_state.page.startswith("modul_"):
+    nomor_modul = st.session_state.page.split("_")[1]
 
+    if nomor_modul == "1":
+        st.title("Modul 1 – Reaksi-reaksi Kimia")
+        st.write("Selamat datang di Modul 1!")
 
+        st.subheader("🎯 PDF Praktikum")
+        st.pdf("file:///C:/Users/rajwa/Downloads/Documents/Modul%20Praktikum%20Laboratorium%20Kimia%20WI%201112%202024.pdf")
+        
+        st.subheader("📘 Video Praktikum")
+        VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=F2LkE4"
+        st.video(VIDEO_URL)
+
+        st.subheader("📝 Referensi Jurnal Praktikum")
+        st.pdf("file:///C:/Users/rajwa/Downloads/Documents/Juprak%20Kimia.pdf")
+
+        st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
