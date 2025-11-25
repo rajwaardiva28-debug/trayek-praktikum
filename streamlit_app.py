@@ -61,15 +61,29 @@ elif st.session_state.page.startswith("modul_"):
         st.write("Selamat datang di Modul 1!")
 
         st.subheader("🎯 PDF Praktikum")
-        pdf_file = "https://drive.google.com/file/d/1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us/view"
-        st.download_button("Download PDF Modul 1", open(pdf_file, "rb"), file_name="Modul1.pdf")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
         
         st.subheader("📘 Video Praktikum")
         VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=F2LkE4"
         st.video(VIDEO_URL)
 
         st.subheader("📝 Referensi Jurnal Praktikum")
-        jurnal_file = "https://drive.google.com/drive/u/0/folders/1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
-        st.download_button("Download Jurnal", open(jurnal_file, "rb"), file_name="Jurnal_Kimia.pdf")
+         FILE_ID = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
+
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+                    width="100%" height="600"></iframe>
+            """,
+            height=600,
+        )
         
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
