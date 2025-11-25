@@ -72,7 +72,7 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Jurnal Praktikum")
-        FILE_Jurnal  = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+        FILE_Jurnal = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
 
         st.components.v1.html(
             f"""
@@ -85,7 +85,6 @@ elif st.session_state.page.startswith("modul_"):
         st.subheader("📘 Video Praktikum")
         VIDEO_URL = "https://itbdsti.sharepoint.com/:v:/r/sites/WI1112/Shared%20Documents/General/Modul%205.mp4?csf=1&web=1&e=7Kr7bi&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D"
         st.video(VIDEO_URL)
-        
         
         st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
 
