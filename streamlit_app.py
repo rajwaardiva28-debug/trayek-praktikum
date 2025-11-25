@@ -72,10 +72,10 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Jurnal Praktikum")
-        FILE_Jurnal = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
-        st.components.v2.html(
+        FILE_ID = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+        st.components.v1.html(
             f"""
-            <iframe src="https://drive.google.com/file/d/{FILE_Jurnal}/preview"
+            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
                     width="100%" height="600"></iframe>
             """,
             height=600,
