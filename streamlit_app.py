@@ -1,4 +1,5 @@
 import streamlit as st
+pip install streamlit[pdf]
 
 # Inisialisasi halaman
 if "page" not in st.session_state:
