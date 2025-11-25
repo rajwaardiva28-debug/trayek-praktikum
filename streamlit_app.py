@@ -1,19 +1,36 @@
 import streamlit as st
 
-st.title("Trayek Praktikum")
+# Inisialisasi halaman
+if "page" not in st.session_state:
+    st.session_state.page = "page1"
 
-st.write(
-    "Selamat Praktikum!"
-)
+def next_page():
+    st.session_state.page = "page2"
 
-input_NIM = st.text_input("Masukkan NIM: ", )
-pilihan_praktikum = ["LKD", "LFD"]
+# HALAMAN 1
+if st.session_state.page == "page1":
+    st.title("Trayek Praktikum")
 
-pilihan_terpilih = st.selectbox(
-    "Praktikum yang akan dilakukan:",
-    pilihan_praktikum
-)
+    st.write("Selamat Praktikum!")
 
-st.button("Enter")
+    input_NIM = st.text_input("Masukkan NIM: ")
+    pilihan_praktikum = ["LKD", "LFD"]
+
+    pilihan_terpilih = st.selectbox(
+        "Praktikum yang akan dilakukan:",
+        pilihan_praktikum
+    )
+
+    st.button("Enter", on_click=next_page)
+
+# HALAMAN 2
+elif st.session_state.page == "page2":
+    st.title("Halaman berikutnya")
+
+    st.write(f"NIM kamu: **{input_NIM}**")
+    st.write(f"Praktikum dipilih: **{pilihan_terpilih}**")
+
+    st.write("Ini halaman lanjutan setelah kamu tekan Enter.")
+
 
 
