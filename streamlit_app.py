@@ -75,7 +75,7 @@ elif st.session_state.page.startswith("modul_"):
         FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
         st.components.v1.html(
             f"""
-            <iframe src="https://drive.google.com/file/d/{FILE_ID1}"
+            <iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID1}"
                     width="100%" height="600"></iframe>
             """,
             height=600,
