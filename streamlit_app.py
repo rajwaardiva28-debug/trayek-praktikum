@@ -36,11 +36,11 @@ elif st.session_state.page == "page2":
     st.write("Silakan pilih modul yang ingin kamu kerjakan:")
 
     # TOMBOL MODUL 1 – 5
-    st.button("📘 Modul 1", on_click=lambda: pilih_modul(1))
-    st.button("🤖 Modul 2", on_click=lambda: pilih_modul(2))
-    st.button("📦 Modul 3", on_click=lambda: pilih_modul(3))
-    st.button("🧪 Modul 4", on_click=lambda: pilih_modul(4))
-    st.button("📝 Modul 5", on_click=lambda: pilih_modul(5))
+    st.button("Modul 1", on_click=lambda: pilih_modul(1))
+    st.button("Modul 2", on_click=lambda: pilih_modul(2))
+    st.button("Modul 3", on_click=lambda: pilih_modul(3))
+    st.button("Modul 4", on_click=lambda: pilih_modul(4))
+    st.button("Modul 5", on_click=lambda: pilih_modul(5))
 
     st.write("---")
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
