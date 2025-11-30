@@ -60,7 +60,7 @@ elif st.session_state.page.startswith("modul_"):
         st.title("Modul 1 – Reaksi-reaksi Kimia")
         st.write("Selamat datang di Modul 1!")
 
-        st.subheader("🎯 PDF Praktikum")
+        st.subheader("🎯 Modul Praktikum")
         FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
 
         st.components.v1.html(
@@ -75,7 +75,7 @@ elif st.session_state.page.startswith("modul_"):
         FILE_ID = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
         st.components.v1.html(
             f"""
-            <iframe src="https://drive.google.com/file/d/{FILE_ID}/preview"
+            <iframe src="https://drive.google.com/drive/u/0/folders/{FILE_ID}/preview"
                     width="100%" height="600"></iframe>
             """,
             height=600,
@@ -92,7 +92,7 @@ elif st.session_state.page.startswith("modul_"):
         st.title("Modul 2 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 2!")
 
-        st.subheader("🎯 PDF Praktikum")
+        st.subheader("🎯 Modul Praktikum")
         FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
 
         st.components.v1.html(
@@ -107,7 +107,7 @@ elif st.session_state.page.startswith("modul_"):
         st.title("Modul 3 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 3!")
 
-        st.subheader("🎯 PDF Praktikum")
+        st.subheader("🎯 Modul Praktikum")
         FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
 
         st.components.v1.html(
@@ -122,7 +122,7 @@ elif st.session_state.page.startswith("modul_"):
         st.title("Modul 4 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 4!")
 
-        st.subheader("🎯 PDF Praktikum")
+        st.subheader("🎯 Modul Praktikum")
         FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
 
         st.components.v1.html(
@@ -137,7 +137,7 @@ elif st.session_state.page.startswith("modul_"):
         st.title("Modul 5 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 5!")
 
-        st.subheader("🎯 PDF Praktikum")
+        st.subheader("🎯 Modul Praktikum")
         FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
 
         st.components.v1.html(
