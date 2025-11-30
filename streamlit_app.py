@@ -129,6 +129,17 @@ elif st.session_state.page.startswith("modul_"):
             height=600,
         )
 
+        st.subheader("Jurnal Praktikum")
+        FILE_ID2 = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+        
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID2}"
+                    width="100%" height="200"></iframe>
+            """,
+            height=200,
+        )
+
     elif nomor_modul == "4":
         st.title("Modul 4 – Stokiometri Reaksi Kimia")
         st.write("Selamat datang di Modul 4!")
@@ -142,6 +153,17 @@ elif st.session_state.page.startswith("modul_"):
                     width="100%" height="600"></iframe>
             """,
             height=600,
+        )
+
+        st.subheader("Jurnal Praktikum")
+        FILE_ID2 = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+        
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID2}"
+                    width="100%" height="200"></iframe>
+            """,
+            height=200,
         )
 
     elif nomor_modul == "5":
@@ -159,8 +181,15 @@ elif st.session_state.page.startswith("modul_"):
             height=600,
         )
 
-
-
-
+        st.subheader("Jurnal Praktikum")
+        FILE_ID2 = "114LSosxqP_GIZ8KGI1nZpno_0L1e23BR"
+        
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID2}"
+                    width="100%" height="200"></iframe>
+            """,
+            height=200,
+        )
 
     st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
