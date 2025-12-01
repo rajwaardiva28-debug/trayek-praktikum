@@ -156,12 +156,13 @@ elif st.session_state.page == "page3":
 elif st.session_state.page.startswith("modul_"):
     nomor_modul = st.session_state.page.split("_")[1]
     
-    if st.session_state.saved_pilihan == "LKD":
-        func_kembali = lambda: st.session_state.update(page="page2")
-        label_kembali = "⬅️ Kembali ke Menu LKD"
-    else:
+    if st.session_state.saved_pilihan == "LFD":
         func_kembali = lambda: st.session_state.update(page="page3")
         label_kembali = "⬅️ Kembali ke Menu LFD"
+    else:
+        func_kembali = lambda: st.session_state.update(page="page2")
+        label_kembali = "⬅️ Kembali ke Menu LKD"
+        
 
     if nomor_modul == "1":
         
