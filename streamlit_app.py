@@ -147,59 +147,59 @@ elif st.session_state.page == "page3":
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")
             
-    elif st.session_state.page.startswith("modul_"):
-    nomor_modul = st.session_state.page.split("_")[1]
+elif st.session_state.page.startswith("modul_"):
+nomor_modul = st.session_state.page.split("_")[1]
 
-    # Tombol Kembali
-    # Mengarahkan user kembali ke menu yang sesuai (LKD ke page2, LFD ke page3)
-    if st.session_state.pilihan == "LKD":
-        kembali_func = lambda: st.session_state.update(page="page2")
-        label_kembali = "⬅️ Kembali ke Menu LKD"
+# Tombol Kembali
+# Mengarahkan user kembali ke menu yang sesuai (LKD ke page2, LFD ke page3)
+if st.session_state.pilihan == "LKD":
+    kembali_func = lambda: st.session_state.update(page="page2")
+    label_kembali = "⬅️ Kembali ke Menu LKD"
+else:
+    kembali_func = lambda: st.session_state.update(page="page3")
+    label_kembali = "⬅️ Kembali ke Menu LFD"
+
+# --- MODUL 1 ---
+if nomor_modul == "1":
+    # Cek apakah user berasal dari menu LFD?
+    if st.session_state.pilihan == "LFD":
+        # === TAMPILAN KHUSUS MODUL 1 LFD ===
+        st.title("Modul 01 – Dasar Pengukuran & Ketidakpastian")
+        st.markdown("### Praktikum Fisika Dasar (LFD)")
+        st.info("Selamat datang di Modul 1! Silakan pelajari materi dan kerjakan tugas di bawah ini.")
+
+        # Tab untuk mengorganisir konten agar rapi
+        tab1, tab2, tab3 = st.tabs(["📖 Materi Modul", "📝 Tugas / LKM", "🎥 Video Pembelajaran"])
+
+        with tab1:
+            st.header("Materi Modul")
+            st.write("Silakan baca modul berikut sebelum memulai praktikum.")
+            # Ganti ID di bawah dengan ID File PDF Modul Fisika di Google Drive Anda
+            ID_MODUL_FISIKA = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
+            st.components.v1.html(
+                f'<iframe src="https://drive.google.com/file/d/{ID_MODUL_FISIKA}/preview" width="100%" height="600"></iframe>',
+                height=600,
+            )
+
+        with tab2:
+            st.header("Lembar Kerja Mahasiswa (LKM)")
+            st.write("Unduh atau akses folder LKM di sini:")
+            # Ganti ID di bawah dengan ID Folder/File LKM Fisika
+            ID_LKM_FISIKA = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
+            st.components.v1.html(
+                f'<iframe src="https://drive.google.com/embeddedfolderview?id={ID_LKM_FISIKA}" width="100%" height="400"></iframe>',
+                height=400,
+            )
+
+        with tab3:
+            st.header("Video Penjelasan")
+            # Masukkan URL video YouTube atau link video lainnya
+            st.write("Tonton video berikut untuk pemahaman lebih lanjut.")
+            # Contoh link video (bisa diganti)
+            st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
+
     else:
-        kembali_func = lambda: st.session_state.update(page="page3")
-        label_kembali = "⬅️ Kembali ke Menu LFD"
-
-    # --- MODUL 1 ---
-    if nomor_modul == "1":
-        # Cek apakah user berasal dari menu LFD?
-        if st.session_state.pilihan == "LFD":
-            # === TAMPILAN KHUSUS MODUL 1 LFD ===
-            st.title("Modul 01 – Dasar Pengukuran & Ketidakpastian")
-            st.markdown("### Praktikum Fisika Dasar (LFD)")
-            st.info("Selamat datang di Modul 1! Silakan pelajari materi dan kerjakan tugas di bawah ini.")
-
-            # Tab untuk mengorganisir konten agar rapi
-            tab1, tab2, tab3 = st.tabs(["📖 Materi Modul", "📝 Tugas / LKM", "🎥 Video Pembelajaran"])
-
-            with tab1:
-                st.header("Materi Modul")
-                st.write("Silakan baca modul berikut sebelum memulai praktikum.")
-                # Ganti ID di bawah dengan ID File PDF Modul Fisika di Google Drive Anda
-                ID_MODUL_FISIKA = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
-                st.components.v1.html(
-                    f'<iframe src="https://drive.google.com/file/d/{ID_MODUL_FISIKA}/preview" width="100%" height="600"></iframe>',
-                    height=600,
-                )
-
-            with tab2:
-                st.header("Lembar Kerja Mahasiswa (LKM)")
-                st.write("Unduh atau akses folder LKM di sini:")
-                # Ganti ID di bawah dengan ID Folder/File LKM Fisika
-                ID_LKM_FISIKA = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
-                st.components.v1.html(
-                    f'<iframe src="https://drive.google.com/embeddedfolderview?id={ID_LKM_FISIKA}" width="100%" height="400"></iframe>',
-                    height=400,
-                )
-
-            with tab3:
-                st.header("Video Penjelasan")
-                # Masukkan URL video YouTube atau link video lainnya
-                st.write("Tonton video berikut untuk pemahaman lebih lanjut.")
-                # Contoh link video (bisa diganti)
-                st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
-
-        else:
-            # === TAMPILAN LKD (Dikosongkan/Disederhanakan) ===
-            st.warning("Halaman Modul 1 LKD belum tersedia atau tidak diperlukan.")
+        # === TAMPILAN LKD (Dikosongkan/Disederhanakan) ===
+        st.warning("Halaman Modul 1 LKD belum tersedia atau tidak diperlukan.")
     st.write("---")
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
