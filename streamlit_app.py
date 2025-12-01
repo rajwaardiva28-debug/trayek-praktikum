@@ -148,7 +148,7 @@ elif st.session_state.page == "page3":
             st.error(f"Terjadi kesalahan: {e}")
         elif st.session_state.page.startswith("modul_"):
     # Mengambil nomor modul dari state (misal: "modul_1" -> "1")
-    nomor_modul = st.session_state.page.split("_")[1]
+            nomor_modul = st.session_state.page.split("_")[1]
 
     # Logika Tombol Kembali: 
     # Jika LFD -> Kembali ke Page 3 (Jadwal)
