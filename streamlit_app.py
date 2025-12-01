@@ -160,7 +160,7 @@ else:
     label_kembali = "⬅️ Kembali ke Menu LFD"
 
 # --- MODUL 1 ---
-if nomor_modul == "1":
+if nomor_modul_in == "1":
     # Cek apakah user berasal dari menu LFD?
     if st.session_state.pilihan == "LFD":
         # === TAMPILAN KHUSUS MODUL 1 LFD ===
