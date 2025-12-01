@@ -148,7 +148,7 @@ elif st.session_state.page == "page3":
             st.error(f"Terjadi kesalahan: {e}")
             
 elif st.session_state.page.startswith("modul_"):
-nomor_modul = st.session_state.page.split("_")[1]
+    nomor_modul = st.session_state.page.split("_")[1]
 
 # Tombol Kembali
 # Mengarahkan user kembali ke menu yang sesuai (LKD ke page2, LFD ke page3)
