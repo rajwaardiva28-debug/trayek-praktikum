@@ -82,91 +82,91 @@ elif st.session_state.page == "page2":
 # --- HALAMAN 3 (MENU LFD - KHUSUS FTI) ---
 elif st.session_state.page == "page3":
     st.title("Praktikum LFD (FTI)")
-    nim_cari = st.session_state.get("input_nim", "").strip()
+    
+    # Ambil NIM dari variabel permanen (saved_nim), BUKAN dari widget
+    nim_cari = st.session_state.saved_nim.strip()
 
     if not nim_cari:
         st.warning("Silakan masukkan NIM di halaman awal.")
     else:
         try:
-            # 1. BACA FILE (Header di baris pertama, jadi tidak perlu skiprows)
+            # 1. Baca CSV dan bersihkan nama kolom
             df = pd.read_csv("Sebaran_LFD_FTI.csv")
-            
-            # Pastikan kolom NIM dibaca sebagai string
+            df.columns = df.columns.str.strip() # Hapus spasi rahasia di header
             df['NIM'] = df['NIM'].astype(str)
             
-            # 2. CARI DATA MAHASISWA
+            # 2. Cari Mahasiswa
             student_data = df[df['NIM'] == nim_cari]
 
             if not student_data.empty:
-                # Ambil Data Diri
                 nama_mhs = student_data.iloc[0]['NAMA']
-                grup_mhs = student_data.iloc[0]['Grup']  # Mengambil data kolom Grup
+                grup_mhs = student_data.iloc[0]['Grup']
                 
                 st.success(f"Mahasiswa ditemukan: **{nama_mhs}**")
-                st.write(f"**NIM:** {nim_cari}")
-                st.info(f"**Grup:** {grup_mhs}") # Menampilkan Grup
+                col1, col2 = st.columns(2)
+                with col1: st.write(f"**NIM:** {nim_cari}")
+                with col2: st.info(f"**Grup:** {grup_mhs}")
                 
                 st.subheader("Jadwal & Modul Praktikum")
-                st.write("Berikut adalah jadwal praktikum Anda:")
 
-                # Daftar kolom tanggal modul (15/09 SUDAH DIHAPUS dari daftar ini)
-                # Sesuaikan nama kolom persis dengan di CSV (termasuk '11-Oct')
+                # Kolom tanggal sesuai file FTI
                 date_cols = ["29/09", "13/10", "27/10", "11-Oct"]
                 
                 cols = st.columns(len(date_cols))
                 
                 for i, date_col in enumerate(date_cols):
                     with cols[i]:
-                        # Tampilkan Tanggal sebagai Header Kecil
-                        st.markdown(f"##### {date_col}")
-                        
-                        if date_col in student_data.columns:
-                            kode_modul = student_data.iloc[0][date_col]
+                        st.markdown(f"**{date_col}**") 
+                        col_clean = date_col.strip()
+
+                        if col_clean in df.columns:
+                            kode_modul = student_data.iloc[0][col_clean]
                             
-                            # Cek validitas kode modul
                             if pd.notna(kode_modul):
-                                st.write(f"Kode: **{kode_modul}**")
-                                
+                                st.write(f"Kode: `{kode_modul}`")
                                 try:
-                                    # Ambil angka dari string (contoh: "M01" -> 1)
+                                    # Ambil angka (M01 -> 1)
                                     nomor_modul_int = int(''.join(filter(str.isdigit, str(kode_modul))))
                                     
-                                    # Tombol Buka Modul
                                     st.button(
                                         f"Buka {kode_modul}", 
-                                        key=f"btn_{date_col}",
+                                        key=f"btn_{col_clean}",
                                         on_click=lambda m=nomor_modul_int: pilih_modul(m)
                                     )
                                 except ValueError:
-                                    # Jika isinya bukan format modul (misal kosong atau text lain)
                                     st.caption("-") 
                             else:
-                                st.caption("Libur / Kosong")
+                                st.caption("Kosong")
                         else:
-                            st.caption("Jadwal Tdk Ada")
+                            st.caption("-")
             else:
-                st.error(f"NIM {nim_cari} tidak ditemukan dalam data.")
-                st.write("Pastikan file CSV benar dan NIM sesuai.")
+                st.error(f"NIM {nim_cari} tidak ditemukan.")
+                st.write("Pastikan NIM sesuai dengan file CSV.")
 
         except FileNotFoundError:
-            st.error("File 'Sebaran_LFD_FTI.csv' tidak ditemukan. Harap unggah file tersebut.")
+            st.error("File 'Sebaran_LFD_FTI.csv' tidak ditemukan.")
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")
-            
+
     st.write("---")
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
-            
+
+# ==========================================
+# 5. HALAMAN DETAIL MODUL (KONTEN)
+# ==========================================
+
 elif st.session_state.page.startswith("modul_"):
     nomor_modul = st.session_state.page.split("_")[1]
-    
-    if st.session_state.saved_pilihan == "LFD":
-        func_kembali = lambda: st.session_state.update(page="page3")
-        label_kembali = "⬅️ Kembali ke Menu LFD"
-    else:
+
+    # Gunakan saved_pilihan (PERMANEN), bukan key widget
+    if st.session_state.saved_pilihan == "LKD":
         func_kembali = lambda: st.session_state.update(page="page2")
         label_kembali = "⬅️ Kembali ke Menu LKD"
-        
+    else:
+        func_kembali = lambda: st.session_state.update(page="page3")
+        label_kembali = "⬅️ Kembali ke Menu LFD"
 
+    # --- KONTEN MODUL 1 ---
     if nomor_modul == "1":
         
         # JIKA LFD
@@ -178,7 +178,7 @@ elif st.session_state.page.startswith("modul_"):
             
             with tab1:
                 st.write("**Modul Praktikum**")
-                FILE_ID_LFD = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
+                FILE_ID_LFD = "13kA_JpbASIMrrpECbW3Ijv2DICt2CKBO" 
                 components.html(
                     f'<iframe src="https://drive.google.com/file/d/{FILE_ID_LFD}/preview" width="100%" height="600"></iframe>',
                     height=600,
@@ -201,7 +201,23 @@ elif st.session_state.page.startswith("modul_"):
                 f'<iframe src="https://drive.google.com/file/d/{FILE_ID_HP}/preview" width="100%" height="600"></iframe>',
                 height=600,
             )
+    
 
+        # JIKA LKD
+        else:
+            st.title("Modul 1 – Reaksi-reaksi Kimia (LKD)")
+            st.subheader("🎯 Modul Praktikum")
+            FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+            components.html(
+                f'<iframe src="https://drive.google.com/file/d/{FILE_ID}/preview" width="100%" height="600"></iframe>',
+                height=600,
+            )
+            st.subheader("Jurnal Praktikum")
+            FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
+            components.html(
+                f'<iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID1}" width="100%" height="100"></iframe>',
+                height=100,
+            )
 
     # --- MODUL LAINNYA ---
     elif nomor_modul == "2":
@@ -211,6 +227,6 @@ elif st.session_state.page.startswith("modul_"):
     else:
         st.title(f"Modul {nomor_modul}")
         st.write("Konten modul ini belum tersedia.")
-            
+
     st.write("---")
     st.button(label_kembali, on_click=func_kembali)
