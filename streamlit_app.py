@@ -194,4 +194,10 @@ elif st.session_state.page.startswith("modul_"):
             height=200,
         )
 
+        st.subheader("Video Praktikum")
+        video_file = open("Modul 5.mp4", "rb")
+        video_bytes = video_file.read()
+
+        st.video(video_bytes)
+        
     st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
