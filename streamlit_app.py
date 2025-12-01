@@ -196,6 +196,18 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Video Praktikum")
+        FILE_ID3 = "1qQ4ROgoR1X3yalDSmubNbIP3OSDJLTT4"
+        
+        st.components.v1.html(
+            f"""
+            <iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID3}"
+                    width="100%" height="200"></iframe>
+            """,
+            height=200,
+        )
+
+
+        st.subheader("Video Praktikum")
         video_file = open('.\Downloads\Video\Modul_5.mp4', 'rb')
         video_bytes = video_file.read()
 
