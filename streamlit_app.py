@@ -72,9 +72,79 @@ elif st.session_state.page == "page2":
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
 
 # HALAMAN 3 (MENU LFD)
+# --- HALAMAN 3 (MENU LFD - KHUSUS FTI) ---
 elif st.session_state.page == "page3":
-    st.title("Praktikum LFD")
-    st.write("Selamat datang di praktikum LFD!")
+    st.title("Praktikum LFD (FTI)")
+    nim_cari = st.session_state.get("input_nim", "").strip()
 
-    st.button("⬅️ Kembali ke daftar modul", 
-              on_click=lambda: st.session_state.update(page="page3"))
+    if not nim_cari:
+        st.warning("Silakan masukkan NIM di halaman awal.")
+    else:
+        try:
+            # 1. BACA FILE (Header di baris pertama, jadi tidak perlu skiprows)
+            df = pd.read_csv("Sebaran_LFD_FTI.csv")
+            
+            # Pastikan kolom NIM dibaca sebagai string
+            df['NIM'] = df['NIM'].astype(str)
+            
+            # 2. CARI DATA MAHASISWA
+            student_data = df[df['NIM'] == nim_cari]
+
+            if not student_data.empty:
+                # Ambil Data Diri
+                nama_mhs = student_data.iloc[0]['NAMA']
+                grup_mhs = student_data.iloc[0]['Grup']  # Mengambil data kolom Grup
+                
+                st.success(f"Mahasiswa ditemukan: **{nama_mhs}**")
+                st.write(f"**NIM:** {nim_cari}")
+                st.info(f"**Grup:** {grup_mhs}") # Menampilkan Grup
+                
+                st.subheader("Jadwal & Modul Praktikum")
+                st.write("Berikut adalah jadwal praktikum Anda:")
+
+                # Daftar kolom tanggal modul (15/09 SUDAH DIHAPUS dari daftar ini)
+                # Sesuaikan nama kolom persis dengan di CSV (termasuk '11-Oct')
+                date_cols = ["29/09", "13/10", "27/10", "11-Oct"]
+                
+                cols = st.columns(len(date_cols))
+                
+                for i, date_col in enumerate(date_cols):
+                    with cols[i]:
+                        # Tampilkan Tanggal sebagai Header Kecil
+                        st.markdown(f"##### {date_col}")
+                        
+                        if date_col in student_data.columns:
+                            kode_modul = student_data.iloc[0][date_col]
+                            
+                            # Cek validitas kode modul
+                            if pd.notna(kode_modul):
+                                st.write(f"Kode: **{kode_modul}**")
+                                
+                                try:
+                                    # Ambil angka dari string (contoh: "M01" -> 1)
+                                    nomor_modul_int = int(''.join(filter(str.isdigit, str(kode_modul))))
+                                    
+                                    # Tombol Buka Modul
+                                    st.button(
+                                        f"Buka {kode_modul}", 
+                                        key=f"btn_{date_col}",
+                                        on_click=lambda m=nomor_modul_int: pilih_modul(m)
+                                    )
+                                except ValueError:
+                                    # Jika isinya bukan format modul (misal kosong atau text lain)
+                                    st.caption("-") 
+                            else:
+                                st.caption("Libur / Kosong")
+                        else:
+                            st.caption("Jadwal Tdk Ada")
+            else:
+                st.error(f"NIM {nim_cari} tidak ditemukan dalam data.")
+                st.write("Pastikan file CSV benar dan NIM sesuai.")
+
+        except FileNotFoundError:
+            st.error("File 'Sebaran_LFD_FTI.csv' tidak ditemukan. Harap unggah file tersebut.")
+        except Exception as e:
+            st.error(f"Terjadi kesalahan: {e}")
+
+    st.write("---")
+    st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
