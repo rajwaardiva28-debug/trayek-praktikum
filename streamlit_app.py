@@ -184,24 +184,9 @@ elif st.session_state.page.startswith("modul_"):
                     f'<iframe src="https://drive.google.com/file/d/{FILE_ID_TP}/preview" width="100%" height="600"></iframe>',
                     height=600,
                 )
-    
 
-        # JIKA LKD
-        else:
-            st.title("Modul 1 – Reaksi-reaksi Kimia (LKD)")
-            st.subheader("🎯 Modul Praktikum")
-            FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
-            components.html(
-                f'<iframe src="https://drive.google.com/file/d/{FILE_ID}/preview" width="100%" height="600"></iframe>',
-                height=600,
-            )
-            st.subheader("Jurnal Praktikum")
-            FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
-            components.html(
-                f'<iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID1}" width="100%" height="100"></iframe>',
-                height=100,
-            )
 
+       
     # --- MODUL LAINNYA ---
     elif nomor_modul == "2":
         st.title(f"Modul 2 ({st.session_state.saved_pilihan})")
