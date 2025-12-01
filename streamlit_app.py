@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import streamlit.components.v1 as components
 
 # Inisialisasi halaman
 if "page" not in st.session_state:
@@ -23,6 +24,8 @@ if st.session_state.page == "page1":
     input_NIM = st.text_input("Masukkan NIM: ", key="input_nim")
     pilihan_praktikum = ["LKD", "LFD"]
 
+    idx_def = 0 if st.session_state.saved_pilihan == "LKD" else 1
+    
     pilihan_terpilih = st.selectbox(
         "Praktikum yang akan dilakukan:",
         pilihan_praktikum,
@@ -152,7 +155,6 @@ elif st.session_state.page.startswith("modul_"):
     func_kembali = lambda: st.session_state.update(page="page3")
     label_kembali = "⬅️ Kembali ke Menu LFD"
 
-    # --- KONTEN MODUL 1 ---
     if nomor_modul == "1":
         
         # JIKA LFD
@@ -180,7 +182,6 @@ elif st.session_state.page.startswith("modul_"):
                 )
 
 
-       
     # --- MODUL LAINNYA ---
     elif nomor_modul == "2":
         st.title(f"Modul 2 ({st.session_state.saved_pilihan})")
