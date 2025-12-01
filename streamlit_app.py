@@ -149,14 +149,8 @@ elif st.session_state.page == "page3":
             
 elif st.session_state.page.startswith("modul_"):
     nomor_modul = st.session_state.page.split("_")[1]
-
-    # Gunakan saved_pilihan (PERMANEN), bukan key widget
-    if st.session_state.saved_pilihan == "LKD":
-        func_kembali = lambda: st.session_state.update(page="page2")
-        label_kembali = "⬅️ Kembali ke Menu LKD"
-    else:
-        func_kembali = lambda: st.session_state.update(page="page3")
-        label_kembali = "⬅️ Kembali ke Menu LFD"
+    func_kembali = lambda: st.session_state.update(page="page3")
+    label_kembali = "⬅️ Kembali ke Menu LFD"
 
     # --- KONTEN MODUL 1 ---
     if nomor_modul == "1":
