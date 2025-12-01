@@ -186,17 +186,17 @@ elif st.session_state.page == "page3":
                 st.warning("Wajib dikerjakan sebelum praktikum dimulai.")
                 
                 # GANTI ID INI dengan ID File PDF Soal TP di Google Drive Anda
-                ID_FILE_TP = "MASUKKAN_ID_FILE_TP_DISINI" 
+                ID_FILE_TP = "1iOGIx1C-d9moDGba_KkjZ7v_h370ilWC" 
                 
                 # Jika TP berupa PDF soal:
-                # st.components.v1.html(
-                #     f'<iframe src="https://drive.google.com/file/d/{ID_FILE_TP}/preview" width="100%" height="600"></iframe>',
-                #     height=600,
-                # )
+                st.components.v1.html(
+                f'<iframe src="https://drive.google.com/file/d/{ID_FILE_TP}/preview" width="100%" height="600"></iframe>',
+                    height=600,
+                )
                 
                 # ATAU Jika TP berupa Link Upload Folder:
-                st.write("Silakan lihat soal atau upload jawaban di link berikut:")
-                st.markdown(f"[Klik disini untuk akses Folder TP](https://drive.google.com/drive/folders/{ID_FILE_TP})")
+                # st.write("Silakan lihat soal atau upload jawaban di link berikut:")
+                # st.markdown(f"[Klik disini untuk akses Folder TP](https://drive.google.com/drive/folders/{ID_FILE_TP})")
 
         else:
             # --- BAGIAN LKD (Tidak diubah sesuai request) ---
