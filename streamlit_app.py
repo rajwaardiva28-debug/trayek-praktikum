@@ -5,6 +5,10 @@ import streamlit.components.v1 as components
 # Inisialisasi halaman
 if "page" not in st.session_state:
     st.session_state.page = "page1"
+if "saved_nim" not in st.session_state:
+    st.session_state.saved_nim = ""
+if "saved_pilihan" not in st.session_state:
+    st.session_state.saved_pilihan = "LFD"
 
 def go_to_page():
     if st.session_state.pilihan == "LKD":
@@ -24,7 +28,6 @@ if st.session_state.page == "page1":
     input_NIM = st.text_input("Masukkan NIM: ", key="input_nim")
     pilihan_praktikum = ["LKD", "LFD"]
 
-    idx_def = 0 if st.session_state.saved_pilihan == "LKD" else 1
     
     pilihan_terpilih = st.selectbox(
         "Praktikum yang akan dilakukan:",
