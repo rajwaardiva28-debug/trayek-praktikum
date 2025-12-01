@@ -146,60 +146,74 @@ elif st.session_state.page == "page3":
             st.error("File 'Sebaran_LFD_FTI.csv' tidak ditemukan. Harap unggah file tersebut.")
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")
-            
-elif st.session_state.page.startswith("modul_"):
-    nomor_modul_int = st.session_state.page.split("_")[1]
+        elif st.session_state.page.startswith("modul_"):
+    # Mengambil nomor modul dari state (misal: "modul_1" -> "1")
+    nomor_modul = st.session_state.page.split("_")[1]
 
-# Tombol Kembali
-# Mengarahkan user kembali ke menu yang sesuai (LKD ke page2, LFD ke page3)
-if st.session_state.pilihan == "LKD":
-    kembali_func = lambda: st.session_state.update(page="page2")
-    label_kembali = "⬅️ Kembali ke Menu LKD"
-else:
-    kembali_func = lambda: st.session_state.update(page="page3")
-    label_kembali = "⬅️ Kembali ke Menu LFD"
+    # Logika Tombol Kembali: 
+    # Jika LFD -> Kembali ke Page 3 (Jadwal)
+    # Jika LKD -> Kembali ke Page 2 (Menu LKD)
+    if st.session_state.pilihan == "LKD":
+        func_kembali = lambda: st.session_state.update(page="page2")
+        label_kembali = "⬅️ Kembali ke Menu LKD"
+    else:
+        func_kembali = lambda: st.session_state.update(page="page3")
+        label_kembali = "⬅️ Kembali ke Menu LFD"
 
-# --- MODUL 1 ---
-if nomor_modul_int == "1":
-    # Cek apakah user berasal dari menu LFD?
-    if st.session_state.pilihan == "LFD":
-        # === TAMPILAN KHUSUS MODUL 1 LFD ===
-        st.title("Modul 01 – Dasar Pengukuran & Ketidakpastian")
-        st.markdown("### Praktikum Fisika Dasar (LFD)")
-        st.info("Selamat datang di Modul 1! Silakan pelajari materi dan kerjakan tugas di bawah ini.")
+    if nomor_modul == "1":
+        # Cek apakah ini LFD?
+        if st.session_state.pilihan == "LFD":
+            st.title("Modul 01 – Fisika Dasar (LFD)")
+            st.markdown("Silakan pelajari modul dan kerjakan Tugas Pendahuluan di bawah ini.")
 
-        # Tab untuk mengorganisir konten agar rapi
-        tab1, tab2, tab3 = st.tabs(["📖 Materi Modul", "📝 Tugas / LKM", "🎥 Video Pembelajaran"])
+            # Membuat Tab agar tampilan rapi
+            tab_modul, tab_tp = st.tabs(["📄 File Modul", "📝 Tugas Pendahuluan"])
 
-        with tab1:
-            st.header("Materi Modul")
-            st.write("Silakan baca modul berikut sebelum memulai praktikum.")
-            # Ganti ID di bawah dengan ID File PDF Modul Fisika di Google Drive Anda
-            ID_MODUL_FISIKA = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
-            st.components.v1.html(
-                f'<iframe src="https://drive.google.com/file/d/{ID_MODUL_FISIKA}/preview" width="100%" height="600"></iframe>',
-                height=600,
-            )
+            # --- TAB 1: FILE MODUL ---
+            with tab_modul:
+                st.subheader("Modul Praktikum")
+                # GANTI ID INI dengan ID File PDF Modul Fisika di Google Drive Anda
+                ID_FILE_MODUL = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
+                
+                st.components.v1.html(
+                    f'<iframe src="https://drive.google.com/file/d/{ID_FILE_MODUL}/preview" width="100%" height="600"></iframe>',
+                    height=600,
+                )
 
-        with tab2:
-            st.header("Lembar Kerja Mahasiswa (LKM)")
-            st.write("Unduh atau akses folder LKM di sini:")
-            # Ganti ID di bawah dengan ID Folder/File LKM Fisika
-            ID_LKM_FISIKA = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
-            st.components.v1.html(
-                f'<iframe src="https://drive.google.com/embeddedfolderview?id={ID_LKM_FISIKA}" width="100%" height="400"></iframe>',
-                height=400,
-            )
+            # --- TAB 2: TUGAS PENDAHULUAN ---
+            with tab_tp:
+                st.subheader("Tugas Pendahuluan (TP)")
+                st.warning("Wajib dikerjakan sebelum praktikum dimulai.")
+                
+                # GANTI ID INI dengan ID File PDF Soal TP di Google Drive Anda
+                ID_FILE_TP = "MASUKKAN_ID_FILE_TP_DISINI" 
+                
+                # Jika TP berupa PDF soal:
+                # st.components.v1.html(
+                #     f'<iframe src="https://drive.google.com/file/d/{ID_FILE_TP}/preview" width="100%" height="600"></iframe>',
+                #     height=600,
+                # )
+                
+                # ATAU Jika TP berupa Link Upload Folder:
+                st.write("Silakan lihat soal atau upload jawaban di link berikut:")
+                st.markdown(f"[Klik disini untuk akses Folder TP](https://drive.google.com/drive/folders/{ID_FILE_TP})")
 
-        with tab3:
-            st.header("Video Penjelasan")
-            # Masukkan URL video YouTube atau link video lainnya
-            st.write("Tonton video berikut untuk pemahaman lebih lanjut.")
-            # Contoh link video (bisa diganti)
-            st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
+        else:
+            # --- BAGIAN LKD (Tidak diubah sesuai request) ---
+            st.title("Modul 01 - Kimia Dasar (LKD)")
+            st.write("Konten Modul 1 LKD...")
+            # (Masukkan kode LKD lama di sini jika perlu)
+
+    # ==========================================
+    # KONTEN MODUL LAINNYA (Placeholder)
+    # ==========================================
+    elif nomor_modul == "2":
+        st.title(f"Modul 02 - {st.session_state.pilihan}")
+        st.write("Materi sedang disiapkan.")
 
     else:
-        # === TAMPILAN LKD (Dikosongkan/Disederhanakan) ===
-        st.warning("Halaman Modul 1 LKD belum tersedia atau tidak diperlukan.")
+        st.title(f"Modul {nomor_modul}")
+        st.write("Halaman belum tersedia.")
+            
     st.write("---")
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
