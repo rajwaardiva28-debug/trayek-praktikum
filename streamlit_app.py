@@ -147,69 +147,69 @@ elif st.session_state.page == "page3":
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")
             
-    elif st.session_state.page.startswith("modul_"):
-        nomor_modul = st.session_state.page.split("_")[1]
+elif st.session_state.page.startswith("modul_"):
+    nomor_modul = st.session_state.page.split("_")[1]
 
-    # Gunakan saved_pilihan (PERMANEN), bukan key widget
-    if st.session_state.saved_pilihan == "LKD":
-        func_kembali = lambda: st.session_state.update(page="page2")
-        label_kembali = "⬅️ Kembali ke Menu LKD"
-    else:
-        func_kembali = lambda: st.session_state.update(page="page3")
-        label_kembali = "⬅️ Kembali ke Menu LFD"
+# Gunakan saved_pilihan (PERMANEN), bukan key widget
+if st.session_state.saved_pilihan == "LKD":
+    func_kembali = lambda: st.session_state.update(page="page2")
+    label_kembali = "⬅️ Kembali ke Menu LKD"
+else:
+    func_kembali = lambda: st.session_state.update(page="page3")
+    label_kembali = "⬅️ Kembali ke Menu LFD"
 
-    # --- KONTEN MODUL 1 ---
-    if nomor_modul == "1":
-        
-        # JIKA LFD
-        if st.session_state.saved_pilihan == "LFD":
-            st.title("Modul 01 – Dasar Pengukuran (LFD)")
-            st.markdown("### Praktikum Fisika Dasar")
-            
-            tab1, tab2 = st.tabs(["📄 File Modul", "📝 Tugas Pendahuluan"])
-            
-            with tab1:
-                st.write("**Modul Praktikum**")
-                FILE_ID_LFD = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
-                components.html(
-                    f'<iframe src="https://drive.google.com/file/d/{FILE_ID_LFD}/preview" width="100%" height="600"></iframe>',
-                    height=600,
-                )
-            
-            with tab2:
-                st.write("**Tugas Pendahuluan (TP)**")
-                st.info("Kerjakan soal berikut sebelum praktikum dimulai.")
-                FILE_ID_TP = "1iOGIx1C-d9moDGba_KkjZ7v_h370ilWC" 
-                components.html(
-                    f'<iframe src="https://drive.google.com/file/d/{FILE_ID_TP}/preview" width="100%" height="600"></iframe>',
-                    height=600,
-                )
+# --- KONTEN MODUL 1 ---
+if nomor_modul == "1":
     
-
-        # JIKA LKD
-        else:
-            st.title("Modul 1 – Reaksi-reaksi Kimia (LKD)")
-            st.subheader("🎯 Modul Praktikum")
-            FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+    # JIKA LFD
+    if st.session_state.saved_pilihan == "LFD":
+        st.title("Modul 01 – Dasar Pengukuran (LFD)")
+        st.markdown("### Praktikum Fisika Dasar")
+        
+        tab1, tab2 = st.tabs(["📄 File Modul", "📝 Tugas Pendahuluan"])
+        
+        with tab1:
+            st.write("**Modul Praktikum**")
+            FILE_ID_LFD = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
             components.html(
-                f'<iframe src="https://drive.google.com/file/d/{FILE_ID}/preview" width="100%" height="600"></iframe>',
+                f'<iframe src="https://drive.google.com/file/d/{FILE_ID_LFD}/preview" width="100%" height="600"></iframe>',
                 height=600,
             )
-            st.subheader("Jurnal Praktikum")
-            FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
+        
+        with tab2:
+            st.write("**Tugas Pendahuluan (TP)**")
+            st.info("Kerjakan soal berikut sebelum praktikum dimulai.")
+            FILE_ID_TP = "1iOGIx1C-d9moDGba_KkjZ7v_h370ilWC" 
             components.html(
-                f'<iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID1}" width="100%" height="100"></iframe>',
-                height=100,
+                f'<iframe src="https://drive.google.com/file/d/{FILE_ID_TP}/preview" width="100%" height="600"></iframe>',
+                height=600,
             )
 
-    # --- MODUL LAINNYA ---
-    elif nomor_modul == "2":
-        st.title(f"Modul 2 ({st.session_state.saved_pilihan})")
-        st.write("Konten belum tersedia.")
 
+    # JIKA LKD
     else:
-        st.title(f"Modul {nomor_modul}")
-        st.write("Konten modul ini belum tersedia.")
+        st.title("Modul 1 – Reaksi-reaksi Kimia (LKD)")
+        st.subheader("🎯 Modul Praktikum")
+        FILE_ID = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us"
+        components.html(
+            f'<iframe src="https://drive.google.com/file/d/{FILE_ID}/preview" width="100%" height="600"></iframe>',
+            height=600,
+        )
+        st.subheader("Jurnal Praktikum")
+        FILE_ID1 = "1wSQZtgceUIY-HjzbWspSWlK8KkViBtkG"
+        components.html(
+            f'<iframe src="https://drive.google.com/embeddedfolderview?id={FILE_ID1}" width="100%" height="100"></iframe>',
+            height=100,
+        )
+
+# --- MODUL LAINNYA ---
+elif nomor_modul == "2":
+    st.title(f"Modul 2 ({st.session_state.saved_pilihan})")
+    st.write("Konten belum tersedia.")
+
+else:
+    st.title(f"Modul {nomor_modul}")
+    st.write("Konten modul ini belum tersedia.")
             
     st.write("---")
     st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
