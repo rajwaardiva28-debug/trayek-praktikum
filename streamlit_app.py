@@ -115,6 +115,7 @@ elif st.session_state.page.startswith("modul_"):
             height=200,
         )
 
+
      
     elif nomor_modul == "3":
         st.title("Modul 3 – Stokiometri Reaksi Kimia")
@@ -195,9 +196,8 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Video Praktikum")
-        video_file = open("Modul 5.mp4", "rb")
-        video_bytes = video_file.read()
+        video_url = "https://drive.google.com/drive/u/3/folders/1qQ4ROgoR1X3yalDSmubNbIP3OSDJLTT4" 
 
-        st.video(video_bytes)
+        st.video(video_url)
         
     st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
