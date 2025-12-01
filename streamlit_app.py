@@ -153,6 +153,9 @@ elif st.session_state.page == "page3":
         except Exception as e:
             st.error(f"Terjadi kesalahan: {e}")
             
+    st.write("---")
+    st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
+            
 elif st.session_state.page.startswith("modul_"):
     nomor_modul = st.session_state.page.split("_")[1]
     
