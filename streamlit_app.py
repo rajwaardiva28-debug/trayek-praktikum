@@ -155,8 +155,13 @@ elif st.session_state.page == "page3":
             
 elif st.session_state.page.startswith("modul_"):
     nomor_modul = st.session_state.page.split("_")[1]
-    func_kembali = lambda: st.session_state.update(page="page3")
-    label_kembali = "⬅️ Kembali ke Menu LFD"
+    
+    if st.session_state.saved_pilihan == "LKD":
+        func_kembali = lambda: st.session_state.update(page="page2")
+        label_kembali = "⬅️ Kembali ke Menu LKD"
+    else:
+        func_kembali = lambda: st.session_state.update(page="page3")
+        label_kembali = "⬅️ Kembali ke Menu LFD"
 
     if nomor_modul == "1":
         
@@ -204,4 +209,4 @@ elif st.session_state.page.startswith("modul_"):
         st.write("Konten modul ini belum tersedia.")
             
     st.write("---")
-    st.button("⬅️ Kembali ke halaman awal", on_click=lambda: st.session_state.update(page="page1"))
+    st.button(label_kembali, on_click=func_kembali)
