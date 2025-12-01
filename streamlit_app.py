@@ -196,7 +196,7 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Video Praktikum")
-        video_file = open('.\Downloads\Video\Modul 5.mp4', 'rb')
+        video_file = open('.\Downloads\Video\Modul_5.mp4', 'rb')
         video_bytes = video_file.read()
 
         st.video(video_bytes)
