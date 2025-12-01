@@ -173,7 +173,7 @@ elif st.session_state.page == "page3":
             with tab_modul:
                 st.subheader("Modul Praktikum")
                 # GANTI ID INI dengan ID File PDF Modul Fisika di Google Drive Anda
-                ID_FILE_MODUL = "1f8bEu46KVdLVC_pZjucA7H-dtIyj09Us" 
+                ID_FILE_MODUL = "13kA_JpbASIMrrpECbW3Ijv2DICt2CKBO" 
                 
                 st.components.v1.html(
                     f'<iframe src="https://drive.google.com/file/d/{ID_FILE_MODUL}/preview" width="100%" height="600"></iframe>',
