@@ -196,8 +196,9 @@ elif st.session_state.page.startswith("modul_"):
         )
 
         st.subheader("Video Praktikum")
-        video_url = "https://drive.google.com/drive/u/3/folders/1qQ4ROgoR1X3yalDSmubNbIP3OSDJLTT4" 
+        video_file = open("Modul 5.mp4", "rb")
+        video_bytes = video_file.read()
 
-        st.video(video_url)
+        st.video(video_bytes)
         
     st.button("⬅️ Kembali ke daftar modul", on_click=lambda: st.session_state.update(page="page2"))
